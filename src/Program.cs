@@ -12,7 +12,8 @@ namespace SimpleSineGenerator
         {
             do
             {
-                // play some audio
+                if (cli.start()) audio.PlayBuffer();
+                
             } while (cli.repeat());
         }
     }

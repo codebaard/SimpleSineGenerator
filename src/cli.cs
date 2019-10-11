@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleSineGenerator
 {
-    class cli
+    public class cli
     {
         //user interface goes here
 
@@ -15,15 +15,41 @@ namespace SimpleSineGenerator
             Console.WriteLine("Want to continue? y/n : ");
             try
             {
-                ConsoleKey temp = Console.ReadKey();
-                if (temp == ConsoleKey.Y) return true;
-                else if (temp == ConsoleKey.N) return false;
+                ConsoleKeyInfo temp = Console.ReadKey();
+                if (temp.Key == ConsoleKey.Y) return true;
+                else if (temp.Key == ConsoleKey.N) return false;
             }
             catch (Exception e)
             {
                 Console.WriteLine("An error occured : " + e.Message);
                 return false;
             }
+
+            return false;
+        }
+
+        public static bool start()
+        {
+            Console.WriteLine("Want to start? y/n : ");
+            try
+            {
+                ConsoleKeyInfo temp = Console.ReadKey();
+                if (temp.Key == ConsoleKey.Y) {
+                    Console.WriteLine("Alright...here we go!");
+                    Console.WriteLine("");
+                    return true;
+                }
+                else if (temp.Key == ConsoleKey.N) {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("An error occured : " + e.Message);
+                return false;
+            }
+
+            return false;
         }
 
         //singleton stuff
@@ -32,7 +58,7 @@ namespace SimpleSineGenerator
         public static cli instance
         {
             get {
-                if (singleton == NULL)
+                if (singleton == null)
                 {
                     singleton = new cli();
                 }
