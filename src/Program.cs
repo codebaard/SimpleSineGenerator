@@ -12,7 +12,12 @@ namespace SimpleSineGenerator
         {
             do
             {
-                if (cli.start()) audio.PlayBuffer();
+                if (cli.start())
+                {
+                    audio.FillBuffer();
+                    audio.PlayBuffer();
+                }
+
                 
             } while (cli.repeat());
         }
